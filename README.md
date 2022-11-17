@@ -12,7 +12,7 @@
 
     ![](assets/img/todo1.png)
 
-c，拖放crx插件到页面
+3. 拖放crx插件到页面
 
 ### Google Chrome
 
