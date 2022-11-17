@@ -1,4 +1,4 @@
-# videox 使用教程
+# 使用教程
 
 ## 安装插件
 
@@ -61,3 +61,10 @@ c，拖放crx插件到页面
     a，同时按住 ctrl >，增加速度
 
     b，同时安装 ctrl <，减小速度
+
+# 适配网站
+
+1. 中国石油大学 http://www.cupde.cn
+2. 尚课网 http://www.onmooc.com
+3. 奥鹏教育 https://learn.open.com.cn
+4. 网梯科技 https://wtykt-p.webtrn.cn/cms/
