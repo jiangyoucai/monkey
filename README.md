@@ -10,7 +10,7 @@
 
 2. 打开开发人员模式
 
-    ![](todo1.png)
+    ![](assets/todo1.png)
 
 c，拖放crx插件到页面
 
@@ -22,7 +22,7 @@ c，拖放crx插件到页面
 
 2. 打开开发人员模式
 
-    ![](todo5.png)
+    ![](assets/todo5.png)
 
 3. 拖放crx插件到页面
 
@@ -30,17 +30,17 @@ c，拖放crx插件到页面
 
 1. 点击菜单栏图标
 
-    ![](todo2.png)
+    ![](assets/todo2.png)
 
 2. 点击添加脚本
 
-    ![](todo3.png)
+    ![](assets/todo3.png)
 
 3. 复制js文件内容
 
 4. 覆盖粘贴到插件编辑器
     
-    ![](todo4.png)
+    ![](assets/todo4.png)
 
 5. 使用ctrl + s，保存脚本
 
