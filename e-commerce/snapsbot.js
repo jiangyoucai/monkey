@@ -73,8 +73,7 @@
             const source = item.getAttribute("src");
             if (source) {
                 const path = getPath(source);
-                const number = i.toString().padStart(2);
-                const name = getFile("thumb", number, getExtension(path));
+                const name = getFile("thumb", i, getExtension(path));
 
                 hub.push({ name: name, url: path });
             }
@@ -87,8 +86,7 @@
             const source = item.getAttribute("src");
             if (source) {
                 const path = getPath(source);
-                const number = i.toString().padStart(2);
-                const name = getFile("sku", number, getExtension(path));
+                const name = getFile("sku", i, getExtension(path));
 
                 hub.push({ name: name, url: path });
             }
@@ -103,8 +101,7 @@
                 const source = item.getAttribute("src");
                 if (source) {
                     const path = getPath(source);
-                    const number = i.toString().padStart(2);
-                    const name = getFile("detail", number, getExtension(path));
+                    const name = getFile("detail", i, getExtension(path));
 
                     hub.push({ name: name, url: path });
                 }
@@ -120,8 +117,7 @@
                 const source = item.getAttribute("src");
                 if (source) {
                     const path = getPath(source);
-                    const number = index.toString().padStart(2);
-                    const name = getFile("detail", number, getExtension(path));
+                    const name = getFile("detail", index, getExtension(path));
 
                     hub.push({ name: name, url: path });
                 }
@@ -159,7 +155,8 @@
     };
 
     const getFile = (category, index, ext) => {
-        const name = category + "_" + (index + 1);
+        const number = (index + 1).toString().padStart(2);
+        const name = category + "_" + number;
         return name + ext;
     };
 
