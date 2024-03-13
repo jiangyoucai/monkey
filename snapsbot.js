@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Snapsbot - 快照机
 // @namespace    https://snapsbot.com
-// @version      0.0.1
+// @version      0.0.2
 // @description  淘宝/天猫产品详情页图片下载
 // @author       andy.jiang
 // @match        *://detail.tmall.com/item.htm?*
