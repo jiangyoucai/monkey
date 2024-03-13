@@ -155,7 +155,7 @@
     };
 
     const getFile = (category, index, ext) => {
-        const number = (index + 1).toString().padStart(2);
+        const number = (index + 1).toString().padStart(2, 0);
         const name = category + "_" + number;
         return name + ext;
     };
