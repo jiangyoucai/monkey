@@ -1,11 +1,10 @@
 // ==UserScript==
-// @name         Snapsbot - 快照机
+// @name         Snapsbot x Youpin
 // @namespace    https://snapsbot.com
-// @version      0.0.2
-// @description  淘宝/天猫产品详情页图片下载
+// @version      0.0.1
+// @description  小米有品产品详情页图片下载
 // @author       andy.jiang
-// @match        *://detail.tmall.com/item.htm?*
-// @match        *://item.taobao.com/item.htm?*
+// @match        *://www.xiaomiyoupin.com/detail?*
 // @require      https://cdn.bootcdn.net/ajax/libs/jszip/3.10.1/jszip.min.js
 // @require      https://cdn.bootcdn.net/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js
 // @icon         data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
@@ -54,23 +53,17 @@
         let hub = [];
 
         console.log("-----------video-----------");
-        const videoList = document.getElementsByClassName("lib-video");
-        for (let i = 0; i < videoList.length; i++) {
-            const item = videoList[i];
-            const source = item.getAttribute("src");
-            if (source) {
-                const path = getPath(source);
-                const name = getFile("video", i, getExtension(path));
-
-                hub.push({ name: name, url: path });
-            }
-        }
 
         console.log("-----------thumb-----------");
-        const thumbList = document.getElementsByClassName("PicGallery--thumbnailPic--1spSzep");
+        const thumbList = document.getElementsByClassName("thumb-pic");
         for (let i = 0; i < thumbList.length; i++) {
             const item = thumbList[i];
-            const source = item.getAttribute("src");
+            const img = item.getElementsByTagName("img");
+            if (img.length <= 0) {
+                continue;
+            }
+
+            const source = img[0].getAttribute("src");
             if (source) {
                 const path = getPath(source);
                 const name = getFile("thumb", i, getExtension(path));
@@ -80,38 +73,11 @@
         }
 
         console.log("-----------sku-----------");
-        const skuList = document.getElementsByClassName("skuIcon");
-        for (let i = 0; i < skuList.length; i++) {
-            const item = skuList[i];
-            const source = item.getAttribute("src");
-            if (source) {
-                const path = getPath(source);
-                const name = getFile("sku", i, getExtension(path));
-
-                hub.push({ name: name, url: path });
-            }
-        }
 
         console.log("-----------detail-----------");
-        const singList = document.getElementsByClassName("descV8-singleImage");
-        for (let i = 0; i < singList.length; i++) {
-            const tmp = singList[i].getElementsByClassName("lazyload");
-            for (let index = 0; index < tmp.length; index++) {
-                const item = tmp[index];
-                const source = item.getAttribute("src");
-                if (source) {
-                    const path = getPath(source);
-                    const name = getFile("detail", i, getExtension(path));
-
-                    hub.push({ name: name, url: path });
-                }
-            }
-        }
-
-        console.log("-----------detail-----------");
-        const richList = document.getElementsByClassName("descV8-richtext");
+        const richList = document.getElementsByClassName("main-body");
         for (let i = 0; i < richList.length; i++) {
-            const tmp = richList[i].getElementsByClassName("lazyload");
+            const tmp = richList[i].getElementsByTagName("img");
             for (let index = 0; index < tmp.length; index++) {
                 const item = tmp[index];
                 const source = item.getAttribute("src");
@@ -129,8 +95,8 @@
     };
 
     const getPath = (source) => {
-        const args = ["_.webp", "_60x60q50.jpg", "_110x10000Q75.jpg", "_110x10000.jpg"];
-        for (let i = 0; i < args.length; i++) {
+        const args = ["@tag=imgScale&F=webp&h=166&w=166", "@base"];
+        for (let i = 0; i <= args.length; i++) {
             const item = args[i];
 
             if (source.endsWith(item)) {
@@ -162,7 +128,7 @@
 
     const getFolder = () => {
         const ext = ".zip";
-        const name = new URL(window.location.href).searchParams.get("id");
+        const name = new URL(window.location.href).searchParams.get("gid");
         return name + ext;
     };
 
