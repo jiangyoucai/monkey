@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Snapsbot x Taobao
 // @namespace    https://snapsbot.com
-// @version      0.0.4
+// @version      0.0.5
 // @description  淘宝/天猫产品详情页图片下载
 // @author       andy.jiang
 // @match        *://detail.tmall.com/item.htm?*
@@ -66,27 +66,13 @@
       }
     }
 
+    // v0.0.3
     console.log("-----------thumb-----------");
     const thumbList = document.getElementsByClassName(
       "PicGallery--thumbnailPic--1spSzep",
     );
     for (let i = 0; i < thumbList.length; i++) {
       const item = thumbList[i];
-      const source = item.getAttribute("src");
-      if (source) {
-        const path = getPath(source);
-        const name = getFile("thumb", i, getExtension(path));
-
-        hub.push({ name: name, url: path });
-      }
-    }
-
-    console.log("-----------thumb-----------");
-    const thumbContentList = document.getElementsByClassName(
-      "PicGallery--thumbnailPic--nbPtwNj",
-    );
-    for (let i = 0; i < thumbContentList.length; i++) {
-      const item = thumbContentList[i];
       const source = item.getAttribute("src");
       if (source) {
         const path = getPath(source);
@@ -109,12 +95,59 @@
       }
     }
 
+    // v0.0.4
+    console.log("-----------thumb-----------");
+    const thumbContentList = document.getElementsByClassName(
+      "PicGallery--thumbnailPic--nbPtwNj",
+    );
+    for (let i = 0; i < thumbContentList.length; i++) {
+      const item = thumbContentList[i];
+      const source = item.getAttribute("src");
+      if (source) {
+        const path = getPath(source);
+        const name = getFile("thumb", i, getExtension(path));
+
+        hub.push({ name: name, url: path });
+      }
+    }
+
     console.log("-----------sku-----------");
     const skuContentList = document.getElementsByClassName(
       "SkuContent--valueItemImg--1yNVZzn",
     );
     for (let i = 0; i < skuContentList.length; i++) {
       const item = skuContentList[i];
+      const source = item.getAttribute("src");
+      if (source) {
+        const path = getPath(source);
+        const name = getFile("sku", i, getExtension(path));
+
+        hub.push({ name: name, url: path });
+      }
+    }
+
+    // v0.0.5
+    console.log("-----------thumb-----------");
+    const thumbItemList = document.getElementsByClassName(
+      "thumbnailPic--QasTmWDm",
+    );
+    for (let i = 0; i < thumbItemList.length; i++) {
+      const item = thumbItemList[i];
+      const source = item.getAttribute("src");
+      if (source) {
+        const path = getPath(source);
+        const name = getFile("thumb", i, getExtension(path));
+
+        hub.push({ name: name, url: path });
+      }
+    }
+
+    console.log("-----------sku-----------");
+    const skuItemList = document.getElementsByClassName(
+      "valueItemImg--Jd1OD58R",
+    );
+    for (let i = 0; i < skuItemList.length; i++) {
+      const item = skuItemList[i];
       const source = item.getAttribute("src");
       if (source) {
         const path = getPath(source);
