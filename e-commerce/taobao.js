@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Snapsbot x Taobao
 // @namespace    https://snapsbot.com
-// @version      0.0.3
+// @version      0.0.4
 // @description  淘宝/天猫产品详情页图片下载
 // @author       andy.jiang
 // @match        *://detail.tmall.com/item.htm?*
@@ -166,6 +166,8 @@
       "_60x60q50.jpg",
       "_110x10000Q75.jpg",
       "_110x10000.jpg",
+      "_240x10000Q75.jpg",
+      "_Q75.jpg",
     ];
     for (let i = 0; i < args.length; i++) {
       const item = args[i];
