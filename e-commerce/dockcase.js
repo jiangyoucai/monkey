@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Snapsbot x Dockcase
 // @namespace    https://snapsbot.com
-// @version      0.0.1
+// @version      0.0.2
 // @description  多凯斯产品详情页图片下载
 // @author       andy.jiang
 // @match        *://www.dockcase.com/products/*
@@ -64,7 +64,7 @@
       }
 
       const source = img[0].getAttribute("src");
-      if (source) {
+      if (source && isURL(source)) {
         const path = getPath(source);
         const name = getFile("thumb", i, getExtension(path));
 
@@ -79,7 +79,7 @@
       for (let i = 0; i < skuList.length; i++) {
         const item = skuList[i];
         const source = item.getAttribute("src");
-        if (source) {
+        if (source && isURL(source)) {
           const path = getPath(source);
           const name = getFile("sku", i, getExtension(path));
 
@@ -95,7 +95,7 @@
       for (let index = 0; index < tmp.length; index++) {
         const item = tmp[index];
         const source = item.getAttribute("src");
-        if (source) {
+        if (source && isURL(source)) {
           const path = getPath(source);
           const name = getFile("detail", index, getExtension(path));
 
@@ -106,6 +106,14 @@
 
     setProgress();
     setDownload(hub);
+  };
+
+  const isURL = (source) => {
+    try {
+      return Boolean(new URL(source));
+    } catch (e) {
+      return false;
+    }
   };
 
   const getPath = (source) => {
