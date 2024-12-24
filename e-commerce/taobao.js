@@ -6,8 +6,8 @@
 // @author       andy.jiang
 // @match        *://detail.tmall.com/item.htm?*
 // @match        *://item.taobao.com/item.htm?*
-// @require      https://cdn.bootcdn.net/ajax/libs/jszip/3.10.1/jszip.min.js
-// @require      https://cdn.bootcdn.net/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js
+// @require      https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js
+// @require      https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js
 // @icon         data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
 // @grant        none
 // ==/UserScript==
