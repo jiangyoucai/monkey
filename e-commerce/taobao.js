@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Snapsbot x Taobao
 // @namespace    https://snapsbot.com
-// @version      0.0.5
+// @version      0.0.6
 // @description  淘宝/天猫产品详情页图片下载
 // @author       andy.jiang
 // @match        *://detail.tmall.com/item.htm?*
@@ -63,6 +63,20 @@
         const name = getFile("video", i, getExtension(path));
 
         hub.push({ name: name, url: path });
+      }
+    }
+
+    // v0.0.6
+    console.log("-----------video-----------");
+    const videoItem = document.getElementById("videox-video-el");
+    if (videoItem) {
+      const source = videoItem.getAttribute("src");
+      if (source) {
+        const path = getPath(source);
+        const name = getFile("video", 0, getExtension(path));
+
+        // 视频需保留原始URL
+        hub.push({ name: name, url: source });
       }
     }
 
