@@ -68,7 +68,7 @@
 
     console.log("-----------thumb-----------");
     const thumbList = document.getElementsByClassName(
-      "E7gD8doUq1--thumbnailPic--_2b4183e",
+      "_6ebaNqGH1t--thumbnailPic--_2b4183e",
     );
     for (let i = 0; i < thumbList.length; i++) {
       const item = thumbList[i];
@@ -83,7 +83,7 @@
 
     console.log("-----------sku-----------");
     const skuList = document.getElementsByClassName(
-      "E7gD8doUq1--valueItemImg--_5dc5ed4",
+      "_6ebaNqGH1t--valueItemImg--_5dc5ed4",
     );
     for (let i = 0; i < skuList.length; i++) {
       const item = skuList[i];
