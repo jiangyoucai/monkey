@@ -68,7 +68,7 @@
 
     console.log("-----------thumb-----------");
     const thumbList = document.getElementsByClassName(
-      "_6ebaNqGH1t--thumbnailPic--_2b4183e",
+      "esVfqSHIbS--thumbnailPic--_2b4183e",
     );
     for (let i = 0; i < thumbList.length; i++) {
       const item = thumbList[i];
@@ -83,7 +83,7 @@
 
     console.log("-----------sku-----------");
     const skuList = document.getElementsByClassName(
-      "_6ebaNqGH1t--valueItemImg--_5dc5ed4",
+      "esVfqSHIbS--valueItemImg--_5dc5ed4",
     );
     for (let i = 0; i < skuList.length; i++) {
       const item = skuList[i];
@@ -108,6 +108,22 @@
         const name = getFile("detail", index, getExtension(path));
 
         hub.push({ name: name, url: path });
+      }
+    }
+
+    console.log("-----------detail-----------");
+    const richList = document.getElementsByClassName("descV8-richtext");
+    for (let i = 0; i < richList.length; i++) {
+      const tmp = richList[i].getElementsByClassName("lazyload");
+      for (let index = 0; index < tmp.length; index++) {
+        const item = tmp[index];
+        const source = item.getAttribute("src");
+        if (source) {
+          const path = getPath(source);
+          const name = getFile("detail", index, getExtension(path));
+
+          hub.push({ name: name, url: path });
+        }
       }
     }
 
