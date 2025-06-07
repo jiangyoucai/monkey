@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Snapsbot x Taobao
 // @namespace    https://snapsbot.com
-// @version      0.0.7
+// @version      0.0.8
 // @description  淘宝/天猫产品详情页图片下载
 // @author       andy.jiang
 // @match        *://detail.tmall.com/item.htm?*
@@ -67,32 +67,38 @@
     }
 
     console.log("-----------thumb-----------");
-    const thumbList = document.getElementsByClassName(
-      "esVfqSHIbS--thumbnailPic--_2b4183e",
-    );
-    for (let i = 0; i < thumbList.length; i++) {
-      const item = thumbList[i];
-      const source = item.getAttribute("src");
-      if (source) {
-        const path = getPath(source);
-        const name = getFile("thumb", i, getExtension(path));
+    // "esVfqSHIbS--thumbnailPic--_2b4183e",
+    const thumbRegexp = /[a-zA-Z0-9]+--thumbnailPic--_[a-z0-9]+/;
+    const thumbClass = document.body.innerHTML.match(thumbRegexp);
+    if (thumbClass) {
+      const thumbList = document.getElementsByClassName(thumbClass[0]);
+      for (let i = 0; i < thumbList.length; i++) {
+        const item = thumbList[i];
+        const source = item.getAttribute("src");
+        if (source) {
+          const path = getPath(source);
+          const name = getFile("thumb", i, getExtension(path));
 
-        hub.push({ name: name, url: path });
+          hub.push({ name: name, url: path });
+        }
       }
     }
 
     console.log("-----------sku-----------");
-    const skuList = document.getElementsByClassName(
-      "esVfqSHIbS--valueItemImg--_5dc5ed4",
-    );
-    for (let i = 0; i < skuList.length; i++) {
-      const item = skuList[i];
-      const source = item.getAttribute("src");
-      if (source) {
-        const path = getPath(source);
-        const name = getFile("sku", i, getExtension(path));
+    // "esVfqSHIbS--valueItemImg--_5dc5ed4",
+    const skuRegexp = /[a-zA-Z0-9]+--valueItemImg--_[a-z0-9]+/;
+    const skuClass = document.body.innerHTML.match(skuRegexp);
+    if (skuClass) {
+      const skuList = document.getElementsByClassName(skuClass[0]);
+      for (let i = 0; i < skuList.length; i++) {
+        const item = skuList[i];
+        const source = item.getAttribute("src");
+        if (source) {
+          const path = getPath(source);
+          const name = getFile("sku", i, getExtension(path));
 
-        hub.push({ name: name, url: path });
+          hub.push({ name: name, url: path });
+        }
       }
     }
 
