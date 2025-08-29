@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Snapsbot x Taobao
 // @namespace    https://snapsbot.com
-// @version      0.0.8
+// @version      0.0.9
 // @description  淘宝/天猫产品详情页图片下载
 // @author       andy.jiang
 // @match        *://detail.tmall.com/item.htm?*
@@ -68,7 +68,7 @@
 
     console.log("-----------thumb-----------");
     // "esVfqSHIbS--thumbnailPic--_2b4183e",
-    const thumbRegexp = /[a-zA-Z0-9]+--thumbnailPic--_[a-z0-9]+/;
+    const thumbRegexp = /thumbnailPic--[a-zA-Z0-9]+/;
     const thumbClass = document.body.innerHTML.match(thumbRegexp);
     if (thumbClass) {
       const thumbList = document.getElementsByClassName(thumbClass[0]);
@@ -86,7 +86,7 @@
 
     console.log("-----------sku-----------");
     // "esVfqSHIbS--valueItemImg--_5dc5ed4",
-    const skuRegexp = /[a-zA-Z0-9]+--valueItemImg--_[a-z0-9]+/;
+    const skuRegexp = /valueItemImg--[a-zA-Z0-9]+/;
     const skuClass = document.body.innerHTML.match(skuRegexp);
     if (skuClass) {
       const skuList = document.getElementsByClassName(skuClass[0]);
@@ -145,6 +145,8 @@
       "_110x10000.jpg",
       "_240x10000Q75.jpg",
       "_Q75.jpg",
+      "_q50.jpg",
+      "_90x90q30.jpg",
     ];
     for (let i = 0; i < args.length; i++) {
       const item = args[i];
